@@ -1,0 +1,42 @@
+/* Master */
+.page {
+  margin-top: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.h2 {
+  margin-bottom: 25px;
+}
+
+/* UI row */
+.ui-row {
+  padding: 20px 50px;
+}
+
+.container-fluid {
+  max-width: 600px;
+}
+
+
+.display-calculations {
+  padding: 20px 50px;
+}
+
+.reset-button-row {
+  padding: 20px 50px;
+}
+
+/* BUTTONS */
+#submit {
+  float:left;
+  margin-top: 20px;
+  background-color: #f7f7f7;
+  border: 2px solid #393b3a;
+  font-weight: 700;
+}
+
+#reset {
+ /* margin-left: 100px;*/
+  margin-top: 20px;
+  float: right;
+}
