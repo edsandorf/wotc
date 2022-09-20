@@ -79,6 +79,7 @@ server <- function(input, output, session) {
   guesses <- tibble(
     id = paste0(sample(c(letters, LETTERS, 0:9), 10), collapse = "") ,
     timestamp_start = format(Sys.time(), "%Y-%m-%d %H:%M:%S"),
+    timezone = Sys.timezone(),
     guess = NA
   )
 
