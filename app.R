@@ -127,25 +127,48 @@ server <- function(input, output, session) {
   
   # Create a nice looking output table using GT
   output$calculations <- render_gt(
-    tibble(
-      ind_epsilon = individual_error(),
-      ind_epsilon_avg = avg_individual_error(),
-      group_est = group_guess(),
-      group_epsilon = group_error(),
-      wisdom_number = wisdom()
+    tribble(
+      ~Hva, ~Estimat,
+      "Din gjetning", input$guess,
+      "Gruppas gjettning",  group_guess(),
+      "Gjennomsnittlig avvik", avg_individual_error(),
+      "Gruppas avvik", group_error(),
+      "Gruppas visdom", wisdom()
     ) %>% 
-      gt() %>% 
-      cols_label(
-        ind_epsilon = "Ditt avvik",
-        ind_epsilon_avg = "Gjennomsnittlig avvik",
-        group_est = "Gruppas gjetning",
-        group_epsilon = "Gruppas avvik",
-        wisdom_number = "Visdommens nummer"
+      gt(
+        rowname_col = "Hva"
       ) %>% 
       fmt_number(
-        columns = 2:5,
+        columns = 2,
         decimals = 2
+      ) %>% 
+      tab_row_group(
+        label = "Hva er gjettet?",
+        id = "guess",
+        rows = 1:2
+      ) %>% 
+      tab_row_group(
+        label = "Hvor stort er avviket?",
+        id = "error",
+        rows = 3:4
+      ) %>% 
+      tab_row_group(
+        label = "Er gruppa 'visere' enn individet?",
+        id = "wisdom",
+        rows = 5
+      ) %>% 
+      row_group_order(groups = c("guess", "error", "wisdom")) %>% 
+      tab_options(
+        column_labels.hidden = TRUE,
+        row_group.background.color = "#ebebeb",
+        row_group.font.weight = "600"
+      ) %>% 
+      cols_width(
+        Hva ~ px(300),
+        Estimat ~px(100)
       )
+      
+    
   )
 }
 
