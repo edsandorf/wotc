@@ -131,7 +131,7 @@ server <- function(input, output, session) {
     tribble(
       ~Hva, ~Estimat,
       "Din gjetning", input$guess,
-      "Gruppas gjettning",  group_guess(),
+      "Gruppas gjetning",  group_guess(),
       "Gjennomsnittlig avvik", avg_individual_error(),
       "Gruppas avvik", group_error(),
       "Gruppas visdom", wisdom()
@@ -165,11 +165,9 @@ server <- function(input, output, session) {
         row_group.font.weight = "600"
       ) %>% 
       cols_width(
-        Hva ~ px(300),
+        Hva ~ px(400),
         Estimat ~px(100)
       )
-      
-    
   )
 }
 
